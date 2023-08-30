@@ -1,18 +1,17 @@
-import { Component } from 'react';
+import React from 'react';
 import './App.css';
-import CiaoSection from './components/CiaoSection';
+// import CiaoSection from './components/CiaoSection';
+// import H1 from './components/H1';
+import CardSection from './components/CardSection';
 
-class App extends Component { 
-  render() {
-    return (
-      <>
-        <h1>
-          Hi <em>JSX!</em>
-        </h1>
-        <CiaoSection />
-      </>
-    );
-  }
+function App() {
+  return (
+    <>
+      {/* <H1 /> */}
+      <CardSection />
+      {/* <CiaoSection /> */}
+    </>
+  );
 }
 
 export default App;
