@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { USERS } from '../../constants';
-import CardUser from './CardUser';
+import CardList from './CardList';
+import CardSelectList from './CardSelectList';
 
 class CardSection extends Component {
   constructor(props) {
@@ -9,21 +10,19 @@ class CardSection extends Component {
       users: USERS.map((user) => ({ ...user, isSelect: false })),
     };
   }
-  selectorUser = (id) => {
-    const { users } = this.state;
-    const newUsers = JSON.parse(JSON.stringify(users));
-    const newUsersWithSelect = newUsers.map((user) => ({
-      ...user,
-      isSelect: user.id === id ? !user.isSelect : user.isSelect,
-    }));
-    this.setState({ users: newUsersWithSelect });
+
+  setSelectUsers = (newUsers) => {
+    this.setState({ users: newUsers });
   };
-  createCard = (user) => (
-    <CardUser key={user.id} user={user} selectorUser={this.selectorUser} />
-  );
+
   render() {
     const { users } = this.state;
-    return <section>{users.map(this.createCard)}</section>;
+    return (
+      <>
+        <CardSelectList users={users} />
+        <CardList users={users} setSelectUsers={this.setSelectUsers} />
+      </>
+    );
   }
 }
 

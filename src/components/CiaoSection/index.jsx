@@ -13,6 +13,8 @@ class CiaoSection extends Component {
     };
   }
 
+  //написати функцію, яку передасте дитині, щоб дитина мала можливість змінювати стан батьківському елементу
+
   render() {
     const { users, isSortIdUp, isSortFirstNameUp } = this.state;
     return (
