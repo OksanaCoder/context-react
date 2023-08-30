@@ -1,8 +1,7 @@
 import { Component } from 'react';
-import './App.css';
-import CiaoList from './components/CiaoList';
+import CiaoList from './CiaoList';
 
-class App extends Component {
+class CiaoSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,11 +58,7 @@ class App extends Component {
     const { users, isSortIdUp, sortUsersByFirstName } = this.state;
     return (
       <>
-        <h1>
-          Hi <em>JSX!</em>
-        </h1>
         <div>
-          {/* додати кнопку, яка виконує сортування за іменем */}
           <button onClick={this.sortUsersByFirstName}>
             sort by name {sortUsersByFirstName ? 'up' : 'down'}
           </button>
@@ -77,4 +72,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default CiaoSection;
