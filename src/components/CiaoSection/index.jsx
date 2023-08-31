@@ -20,6 +20,7 @@ class CiaoSection extends Component {
     return (
       <>
         <CiaoSort
+          // передасте пропсами функцію, яка дозволяє змінити стан
           users={users}
           isSortIdUp={isSortIdUp}
           isSortFirstNameUp={isSortFirstNameUp}

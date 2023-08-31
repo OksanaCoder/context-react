@@ -13,6 +13,7 @@ class CiaoSort extends Component {
       }
       return 0;
     });
+    //виклик батьківської функції
     this.setState({ users: newUsers, isSortFirstNameUp: !isSortFirstNameUp });
   };
   sortUsersById = () => {
