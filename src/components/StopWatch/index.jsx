@@ -10,10 +10,17 @@ class StopWatch extends Component {
   }
 
   tick = () => {
-    const { time } = this.state; //address
-    const newTime = new Date(time); //new copy time
-    newTime.setSeconds(newTime.getSeconds() + 1);
-    this.setState({ time: newTime });
+    // const { time } = this.state; //address
+    // const newTime = new Date(time); //new copy time
+    // newTime.setSeconds(newTime.getSeconds() + 1);
+    // this.setState({ time: newTime });
+    //add updater
+    this.setState((state) => {
+      const { time } = state; //address
+      const newTime = new Date(time); //new copy time
+      newTime.setSeconds(newTime.getSeconds() + 1);
+      return { time: newTime };
+    });
   };
 
   start = () => {
