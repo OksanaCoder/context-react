@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import styles from './StopWatch.module.css';
 
-class StopWatch extends Component {
+//переписати компонент на setTimeout замість setInterval
+
+class StopWatchTimeout extends Component {
   constructor(props) {
     super(props);
     this.state = {
       time: new Date(0, 0, 0, 0, 0, 0), //object
     };
-    this.idInterval = null;
+    this.idTimeout = null;
   }
 
   tick = () => {
@@ -20,14 +21,12 @@ class StopWatch extends Component {
   };
 
   start = () => {
-    if (this.idInterval === null) {
-      this.idInterval = setInterval(this.tick, 1000);
-    }
+    //запуск секунумера
+    //setTimeout
   };
 
   stop = () => {
-    clearInterval(this.idInterval);
-    this.idInterval = null;
+    //зупинка секундомера
   };
 
   reset = () => {
@@ -35,29 +34,29 @@ class StopWatch extends Component {
     this.setState({ time: new Date(0, 0, 0, 0, 0, 0) });
   };
 
-  componentDidMount() {
-    //this.start()
+  componentDidMount() {}
+
+  componentDidUpdate() {
+    // побічні ефекти!!! 
+    // recursion
+    // start
   }
 
-  componentDidUpdate() {}
-
-  componentWillUnmount() {
-    this.stop()
-  }
+  componentWillUnmount() {}
 
   render() {
     const { time } = this.state;
     return (
-      <article className={styles.container}>
+      <article>
         <h2>{time.toLocaleTimeString('en-GB')}</h2>
         <div>
-          <button className={styles.btn} onClick={this.start}>start</button>
-          <button className={styles.btn} onClick={this.reset}>reset</button>
-          <button className={styles.btn} onClick={this.stop}>stop</button>
+          <button onClick={this.start}>start</button>
+          <button onClick={this.reset}>reset</button>
+          <button onClick={this.stop}>stop</button>
         </div>
       </article>
     );
   }
 }
 
-export default StopWatch;
+export default StopWatchTimeout;
