@@ -3,6 +3,8 @@ import styles from './SignInForm.module.css';
 const initialValues = {
   email: '',
   password: '',
+  emailValid: true,
+  passwordValid: true,
 };
 
 class SignInForm extends Component {
@@ -19,25 +21,25 @@ class SignInForm extends Component {
     this.setState({ ...initialValues });
   };
 
-  // handleEmail = (event) => {
-  //   console.dir(event.target.name);
-  //   this.setState({ email: event.target.value });
-  // };
-
-  // handlePassword = (event) => {
-  //   console.dir(event.target.name);
-  //   this.setState({ password: event.target.value });
-  // };
-
   handleInput = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
+    this.setState({
+      [name]: value,
+      [`${name}Valid`]: value.includes(' ') === false,
+    });
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, emailValid, passwordValid } = this.state;
+    const classesEmail = `${styles.input} ${
+      emailValid ? styles.valid : styles.invalid
+    }`;
+    const classesPassword = `${styles.input} ${
+      passwordValid ? styles.valid : styles.invalid
+    }`;
     return (
       <form className={styles.form} onSubmit={this.handleForm}>
         <input
+          className={classesEmail}
           value={email}
           onChange={this.handleInput}
           type="email"
@@ -45,6 +47,7 @@ class SignInForm extends Component {
           placeholder="your email"
         />
         <input
+          className={classesPassword}
           value={password}
           onChange={this.handleInput}
           type="password"
