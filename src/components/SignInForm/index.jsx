@@ -30,12 +30,28 @@ class SignInForm extends Component {
 
   render() {
     const { email, password, emailValid, passwordValid } = this.state;
-    const classesEmail = `${styles.input} ${
-      emailValid ? styles.valid : styles.invalid
-    }`;
-    const classesPassword = `${styles.input} ${
-      passwordValid ? styles.valid : styles.invalid
-    }`;
+    // const classesEmail = `${styles.input} ${
+    //   emailValid ? styles.valid : styles.invalid
+    // }`;
+    // const classesPassword = `${styles.input} ${
+    //   passwordValid ? styles.valid : styles.invalid
+    // }`;
+    // const classesEmail = [styles.input];
+    // if (emailValid === false) {
+    //   classesEmail.push(styles.invalid);
+    // }
+    // const classesPassword = [styles.input];
+    // if (passwordValid === false) {
+    //   classesPassword.push(styles.invalid);
+    // }
+    const classesEmail = createClasses({
+      [styles.input]:true,
+      [styles.invalid]: !emailValid
+    })
+    const classesPassword = createClasses({
+      [styles.input]:true,
+      [styles.invalid]: !passwordValid
+    })
     return (
       <form className={styles.form} onSubmit={this.handleForm}>
         <input
@@ -58,6 +74,13 @@ class SignInForm extends Component {
       </form>
     );
   }
+}
+
+function createClasses(objStyles) {
+  return Object.entries(objStyles)
+    .filter(([className, condition]) => condition)
+    .map(([className, condition]) => className)
+    .join(' ');
 }
 
 export default SignInForm;
