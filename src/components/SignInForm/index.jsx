@@ -6,6 +6,7 @@ const initialValues = {
   password: '',
   emailValid: true,
   passwordValid: true,
+  check: false,
 };
 
 class SignInForm extends Component {
@@ -29,8 +30,12 @@ class SignInForm extends Component {
     });
   };
 
+  handleCheckbox = ({ target: { name, checked } }) => {
+    this.setState({ [name]: checked });
+  };
+
   render() {
-    const { email, password, emailValid, passwordValid } = this.state;
+    const { check, email, password, emailValid, passwordValid } = this.state;
 
     const classesEmail = cx(styles.input, { [styles.invalid]: !emailValid });
     const classesPassword = cx(styles.input, {
@@ -39,7 +44,22 @@ class SignInForm extends Component {
 
     return (
       <form className={styles.form} onSubmit={this.handleForm}>
-        додати інпут з name='login' з валідацією
+        <div>
+          <h2>hw 01-09-2023</h2>
+          <p>додати інпут з name='login' з валідацією</p>
+          <p>додати інпут з name='check' з type="checkbox"</p>
+          <p>додати групу інпутів з name='radio' з type="radio"</p>
+        </div>
+        <label>
+          <input
+            onChange={this.handleCheckbox}
+            checked={check}
+            type="checkbox"
+            name="check"
+            placeholder="your email"
+          />
+          check me
+        </label>
         <input
           className={classesEmail}
           value={email}
