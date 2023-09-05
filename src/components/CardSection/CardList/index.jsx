@@ -1,5 +1,6 @@
 import React from 'react';
-import CardUser from '../CardUser';
+import PropTypes from 'prop-types';
+import CardUser, { userShape, defaultUser } from '../CardUser';
 
 const CardList = (props) => {
   const { users, setSelectUsers } = props;
@@ -19,5 +20,16 @@ const CardList = (props) => {
 
   return <section>{users.map(createCard)}</section>;
 };
+
+CardList.propTypes = {
+  users: PropTypes.arrayOf(userShape.isRequired).isRequired,
+  setSelectUsers: PropTypes.func,
+};
+
+CardList.defaultProps = {
+  users:[defaultUser],
+  setSelectUsers:()=>{}
+}
+
 
 export default CardList;
