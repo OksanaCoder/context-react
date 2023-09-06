@@ -1,15 +1,11 @@
 import React from 'react';
 import './App.css';
-// import CardUser from './components/CardSection/CardUser';
-import CardList from './components/CardSection/CardList';
-// import Ciao from './components/CiaoSection/Ciao';
+import CiaoSection from './components/CiaoSection';
 
 function App() {
   return (
     <>
-    <CardList />
-      {/* <CardUser /> */}
-      {/* <Ciao id={5}/> */}
+      <CiaoSection />
     </>
   );
 }

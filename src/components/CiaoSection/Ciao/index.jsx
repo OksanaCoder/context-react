@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Ciao.module.css';
+import styles from './Ciao.module.scss';
 
 class Ciao extends Component {
   /**
@@ -24,7 +24,7 @@ class Ciao extends Component {
     const { isHi } = this.state;
     return (
       <h2 className={styles.container}>
-        {isHi ? 'hi' : 'bye'}, {name} {lname} (id = {id})
+        <span>{isHi ? 'hi' : 'bye'}, {name} {lname} (id = {id})</span>
         <button onClick={this.handleBtn}>switch</button>
       </h2>
     );
