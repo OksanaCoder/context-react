@@ -1,16 +1,16 @@
-@import '../../../common/styles/breackpoints'; 
-@import '../../../common/styles/colors'; 
+@use '/src/common/styles/breackpoints' as *;
+@use '/src/common/styles/colors' as *;
+@use '/src/common/styles/templates' as *;
+@use '/src/common/styles/mixin' as *;
+
 $paddingSize: 15px;
 
-
-
 .container {
-  display: flex;
-  justify-content: space-between;
+  @extend %flex-between;
   padding: $paddingSize;
   background-color: $colorMain;
   @media screen and (max-width: $sm) {
     width: 100%;
-    flex-direction: column;
+    @include flexColumn;
   }
 }
