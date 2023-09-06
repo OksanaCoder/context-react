@@ -15,3 +15,9 @@ export const USERS = [
     lastName: 'Rot',
   },
 ];
+
+export const COLORS = {
+  MAIN: 'pink',
+  PITFALL: 'gold',
+  DEPRECATE: 'red',
+};
