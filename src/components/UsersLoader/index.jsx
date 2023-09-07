@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getUsers } from '../../api';
 // import styles from './UsersLoader.module.scss';
 
 class UsersLoader extends Component {
@@ -9,16 +10,14 @@ class UsersLoader extends Component {
       error: null,
       isFetching: false,
       currentPage: 1,
+      currentResults: 5,
     };
   }
 
   load = () => {
-    const { currentPage } = this.state;
+    const { currentPage, currentResults } = this.state;
     this.setState({ isFetching: true });
-    fetch(
-      `https://randomuser.me/api/?results=5&seed=fm20231&page=${currentPage}`
-    )
-      .then((response) => response.json())
+    getUsers({ page: currentPage, results: currentResults })
       .then((data) => {
         this.setState({ users: data.results });
       })
