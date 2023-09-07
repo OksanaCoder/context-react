@@ -21,3 +21,11 @@ export const COLORS = {
   PITFALL: 'gold',
   DEPRECATE: 'red',
 };
+
+export const API = {
+  URL: 'https://randomuser.me/api/',
+  RESULTS: 5,
+  PAGE: 1,
+  KEY: 'fm20231',
+  NAT: 'gb',
+};

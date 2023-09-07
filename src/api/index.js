@@ -1,4 +1,5 @@
 import queryString from 'query-string';
+import { API } from '../constants';
 
 /**
  *
@@ -9,14 +10,14 @@ import queryString from 'query-string';
  */
 export const getUsers = (options = {}) => {
   const defaultOptions = {
-    results: 10,
-    page: 1,
-    seed: 'fm20231',
-    nat: 'gb'
+    results: API.RESULTS,
+    page: API.PAGE,
+    seed: API.KEY,
+    nat: API.NAT
   };
   const readyOptions = { ...defaultOptions, ...options }; 
 
   return fetch(
-    `https://randomuser.me/api/?${queryString.stringify(readyOptions)}`
+    `${API.URL}?${queryString.stringify(readyOptions)}`
   ).then((response) => response.json());
 };
