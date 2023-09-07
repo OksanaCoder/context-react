@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getUsers } from '../../api';
+import Error from '../Error';
 // import styles from './UsersLoader.module.scss';
 
 class UsersLoader extends Component {
@@ -50,11 +51,8 @@ class UsersLoader extends Component {
 
   render() {
     const { isFetching, error, users, currentPage } = this.state;
-    if (isFetching) {
-      return <h2>Loading...</h2>;
-    }
     if (error) {
-      return <h2>Error: {error.message}</h2>;
+      return <Error />;
     }
     return (
       <section>
@@ -67,7 +65,8 @@ class UsersLoader extends Component {
           <button onClick={this.nextPage}>next &gt;</button>
         </div>
         <ul>
-          {users.map((user) => (
+          {isFetching && <h2>Loading...</h2>}
+          {isFetching || users.map((user) => (
             <li key={user.login.uuid}>{user.email}</li>
           ))}
         </ul>
