@@ -6,7 +6,8 @@ import { COLORS } from './constants';
 
 function App() {
   return (
-    <FlexContainer fd='column' jc='space-around'>
+    <>
+      {/* <FlexContainer fd="column" jc="space-around"> */}
       <Note title="Pitfall" bgColor={COLORS.PITFALL}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, cum.
@@ -27,7 +28,8 @@ function App() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, cum.
         </p>
       </Note>
-    </FlexContainer>
+      {/* </FlexContainer> */}
+    </>
   );
 }
 

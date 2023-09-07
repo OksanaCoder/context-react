@@ -17,7 +17,7 @@ export const USERS = [
 ];
 
 export const COLORS = {
-  MAIN: 'pink',
+  MAIN: 'aqua',
   PITFALL: 'gold',
   DEPRECATE: 'red',
 };
