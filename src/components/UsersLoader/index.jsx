@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getUsers } from '../../api';
 import Error from '../Error';
+import Spinner from '../Spinner';
 // import styles from './UsersLoader.module.scss';
 
 class UsersLoader extends Component {
@@ -65,7 +66,7 @@ class UsersLoader extends Component {
           <button onClick={this.nextPage}>next &gt;</button>
         </div>
         <ul>
-          {isFetching && <h2>Loading...</h2>}
+          {isFetching && <Spinner />}
           {isFetching || users.map((user) => (
             <li key={user.login.uuid}>{user.email}</li>
           ))}
