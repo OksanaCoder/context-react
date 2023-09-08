@@ -21,10 +21,14 @@ class UsersLoader extends Component {
     this.setState({ isFetching: true });
     getUsers({ page: currentPage, results: currentResults })
       .then((data) => {
+        // console.log(data);
+        if (data.error) {
+          throw new Error();
+        }
         this.setState({ users: data.results });
       })
       .catch((err) => {
-        console.dir(err);
+        // console.dir(err);
         this.setState({ error: err });
       })
       .finally(() => {
@@ -67,9 +71,8 @@ class UsersLoader extends Component {
         </div>
         <ul>
           {isFetching && <Spinner />}
-          {isFetching || users.map((user) => (
-            <li key={user.login.uuid}>{user.email}</li>
-          ))}
+          {isFetching ||
+            users.map((user) => <li key={user.login.uuid}>{user.email}</li>)}
         </ul>
       </section>
     );
