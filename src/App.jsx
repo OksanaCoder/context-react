@@ -1,18 +1,30 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-
+import NavMenu from './components/NavMenu';
 
 function App() {
   return (
     <>
-     <button onClick={()=>{window.open('https://www.w3schools.com/')}}>open</button>
-     <button onClick={()=>{window.close()}}>close</button>
-     
-     <button onClick={()=>{window.location.assign('https://www.w3schools.com/')}}>assign</button>
-     <button onClick={()=>{window.location.reload()}}>reload</button>
-     <button onClick={()=>{window.location.replace('https://www.w3schools.com/')}}>replace</button>
+      <BrowserRouter>
+        <header>
+          <NavMenu />
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contacts" element={<Contacts />} />
+          </Routes>
+        </main>
+        <footer>&copy;2023</footer>
+      </BrowserRouter>
     </>
   );
 }
+
+const Home = () => <h1>HOME</h1>;
+const About = () => <h1>About</h1>;
+const Contacts = () => <h1>Contacts</h1>;
 
 export default App;
