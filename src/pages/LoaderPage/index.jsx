@@ -1,10 +1,9 @@
 import React from 'react';
 import LoaderData from '../../components/LoaderData';
 import { getUsersJSON, getEventsJSON, getProductsJSON } from '../../api';
-import Error from './../../components/Error';
-import Spinner from './../../components/Spinner';
-// import LoaderUsers from '../../components/LoaderUsers';
-// import LoaderEvents from '../../components/LoaderEvents';
+import ViewUsers from '../../components/ViewUsers';
+import ViewEvents from '../../components/ViewEvents';
+import ViewProducts from '../../components/ViewProducts';
 
 const LoaderPage = () => {
   return (
@@ -12,24 +11,20 @@ const LoaderPage = () => {
       <h2>Users:</h2>
       <LoaderData
         loadData={getUsersJSON}
-        render={({ error, isFetching, data }) => {
-          if (error) {
-            return <Error />;
-          }
-          return (
-            <div>
-              {isFetching && <Spinner />}
-              {isFetching || data.map(({ id, name }) => <p key={id}>{name}</p>)}
-            </div>
-          );
-        }}
+        render={(state) => <ViewUsers state={state} />}
       />
       {/* <LoaderUsers /> */}
       <h2>Events:</h2>
-      {/* <LoaderData loadData={getEventsJSON} render /> */}
+      <LoaderData
+        loadData={getEventsJSON}
+        render={(state) => <ViewEvents state={state} />}
+      />
       {/* <LoaderEvents /> */}
       <h2>Products:</h2>
-      {/* <LoaderData loadData={getProductsJSON} render /> */}
+      <LoaderData
+        loadData={getProductsJSON}
+        render={(state) => <ViewProducts state={state} />}
+      />
     </div>
   );
 };

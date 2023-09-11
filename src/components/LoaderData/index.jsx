@@ -1,9 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// loader data
-// ділитися данними
-
 class LoaderData extends Component {
   constructor(props) {
     super(props);

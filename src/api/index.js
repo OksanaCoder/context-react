@@ -22,11 +22,10 @@ export const getUsers = (options = {}) => {
   );
 };
 
-export const getUsersJSON = () =>
-  fetch('/data/users.json').then((res) => res.json());
+const myFetch = (url) => fetch(url).then((res) => res.json());
 
-export const getEventsJSON = () =>
-  fetch('/data/events.json').then((res) => res.json());
+export const getUsersJSON = () => myFetch('/data/users.json');
 
-export const getProductsJSON = () =>
-  fetch('/data/products.json').then((res) => res.json());
+export const getEventsJSON = () => myFetch('/data/events.json');
+
+export const getProductsJSON = () => myFetch('/data/products.json');
