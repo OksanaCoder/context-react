@@ -14,6 +14,17 @@ const NavMenu = () => {
             <li>
               <NavLink to="/contacts">contacts</NavLink>
             </li>
+            <li>
+              Common: 
+              <ul>
+                <li>
+                  <NavLink to="/commonblock/one">one</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/commonblock/two">two</NavLink>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
   );

@@ -5,7 +5,7 @@ const Error = () => {
   return (
     <div className={styles.error}>
       {/* <img src={errorPic} alt="error" /> */}
-      <img src="./images/error.png" alt="error" />
+      <img src="/images/error.png" alt="error" />
     </div>
   );
 };
