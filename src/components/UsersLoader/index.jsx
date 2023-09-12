@@ -61,7 +61,7 @@ class UsersLoader extends Component {
     }
     return (
       <section>
-        <h2>Users:</h2>
+        <h2>'Users': 'Користувачі'</h2>
         <div>
           <button onClick={this.prevPage} disabled={currentPage === 1}>
             &lt; prev
