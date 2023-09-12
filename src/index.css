@@ -5,6 +5,9 @@
 * {
   box-sizing: border-box;
 }
+a {
+  color: inherit;
+}
 div {
   padding: 10px;
   border: 1px solid pink;
