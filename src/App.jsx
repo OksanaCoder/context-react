@@ -20,6 +20,7 @@ class App extends Component {
         firstName: 'Brad',
         lastName: 'Pitt',
         isSelect: false,
+        avatar:'https://cdn-icons-png.flaticon.com/128/3641/3641963.png'
       },
     };
   }
