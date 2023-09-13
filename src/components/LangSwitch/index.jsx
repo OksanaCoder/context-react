@@ -1,22 +1,21 @@
 import React from "react";
-import { LangContext } from "../../contexts";
+import { withLang } from "../HOCs";
 
-const LangSwitch = () => {
-  const render = ([lang, changeLang]) => {
-    return (
-      <>
-        <button
-          onClick={() => {
-            changeLang("UA");
-          }}
-        >
-          UA
-        </button>
-        <button onClick={() => changeLang("ENG")}>ENG</button>
-      </>
-    );
-  };
-  return <LangContext.Consumer>{render}</LangContext.Consumer>;
+const LangSwitch = (props) => {
+  const { lang, changeLang } = props;
+
+  return (
+    <div>
+      <button
+        onClick={() => {
+          changeLang("UA");
+        }}
+      >
+        UA
+      </button>
+      <button onClick={() => changeLang("ENG")}>ENG</button>
+    </div>
+  );
 };
 
-export default LangSwitch;
+export default withLang(LangSwitch);

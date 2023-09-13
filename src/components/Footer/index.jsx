@@ -1,17 +1,23 @@
 import React from "react";
-import { LangContext } from "../../contexts";
+import cx from "classnames";
+import { THEMES } from "../../constants";
 import LangSwitch from "../LangSwitch";
+import styles from "./Footer.module.scss";
+import { withLang, withTheme } from "../HOCs";
 
-const Footer = () => {
-  const render = ([lang, changeLang]) => {
-    return (
-      <div>
-        <div>&copy;2023</div>
-        <LangSwitch />
-      </div>
-    );
-  };
-  return <LangContext.Consumer>{render}</LangContext.Consumer>;
+const Footer = (props) => {
+  const { theme } = props;
+
+  const classes = cx(styles.container, {
+    [styles.light]: theme === THEMES.LIGHT,
+    [styles.dark]: theme === THEMES.DARK
+  });
+  return (
+    <div className={classes}>
+      <div>&copy;2023</div>
+      <LangSwitch />
+    </div>
+  );
 };
 
-export default Footer;
+export default withTheme(withLang(Footer));
