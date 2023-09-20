@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import CardUser from "../../components/CardSection/CardUser";
-import { withLang } from "../../components/HOCs";
 import { LANG } from "../../constants";
+import { LangContext } from "../../contexts";
 
-const Home = (props) => {
-  const { lang } = props;
+const Home = () => {
+  const { lang } = useContext(LangContext);
   return (
     <div>
       <h1>{lang === LANG.UA ? "Домашня" : "Home"}</h1>
@@ -13,4 +13,4 @@ const Home = (props) => {
   );
 };
 
-export default withLang(Home);
+export default Home;

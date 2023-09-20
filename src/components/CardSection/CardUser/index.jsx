@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import styles from "./CardUser.module.scss";
+import { ThemeContext, UserContext } from "../../../contexts";
 import { THEMES } from "../../../constants";
-import { withTheme, withUser } from "../../HOCs";
 
 const CardUser = (props) => {
   const {
-    theme,
     user: { id, firstName, lastName, isSelect, avatar },
     selectorUser
-  } = props;
+  } = useContext(UserContext);
+  const { theme } = useContext(ThemeContext);
 
   const classes = cx(styles.container, {
     [styles.light]: theme === THEMES.LIGHT,
@@ -31,29 +31,4 @@ const CardUser = (props) => {
   );
 };
 
-export const userShape = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  isSelect: PropTypes.bool
-});
-
-CardUser.propTypes = {
-  user: userShape.isRequired,
-  selectorUser: PropTypes.func.isRequired
-};
-
-export const defaultUser = {
-  id: 0,
-  firstName: "noname",
-  lastName: "noname"
-};
-
-CardUser.defaultProps = {
-  user: defaultUser,
-  selectorUser: () => {}
-};
-
-export default withUser(withTheme(CardUser));
-
-// export default withTheme(withUser(CardUser));
+export default CardUser;

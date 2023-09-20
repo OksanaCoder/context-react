@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import cx from "classnames";
 import { THEMES } from "../../constants";
 import LangSwitch from "../LangSwitch";
 import styles from "./Footer.module.scss";
-import { withLang, withTheme } from "../HOCs";
+import { ThemeContext } from "../../contexts";
 
-const Footer = (props) => {
-  const { theme } = props;
+const Footer = () => {
+  const { theme } = useContext(ThemeContext);
 
   const classes = cx(styles.container, {
     [styles.light]: theme === THEMES.LIGHT,
@@ -20,4 +20,4 @@ const Footer = (props) => {
   );
 };
 
-export default withTheme(withLang(Footer));
+export default Footer;

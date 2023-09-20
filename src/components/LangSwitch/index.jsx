@@ -1,21 +1,15 @@
-import React from "react";
-import { withLang } from "../HOCs";
+import React, { useContext } from "react";
+import { LangContext } from "../../contexts";
 
-const LangSwitch = (props) => {
-  const { lang, changeLang } = props;
+const LangSwitch = () => {
+  const { lang, changeLang } = useContext(LangContext);
 
   return (
     <div>
-      <button
-        onClick={() => {
-          changeLang("UA");
-        }}
-      >
-        UA
-      </button>
+      <button onClick={() => changeLang("UA")}>UA</button>
       <button onClick={() => changeLang("ENG")}>ENG</button>
     </div>
   );
 };
 
-export default withLang(LangSwitch);
+export default LangSwitch;
