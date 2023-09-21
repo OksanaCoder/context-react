@@ -1,50 +1,30 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from "react";
+import { getProductsJSON } from "../../api";
 
-class LoaderData extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      isFetching: false,
-      error: null,
-    };
-  }
+const LoaderData = () => {
+  const [data, setData] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState(null);
 
-  componentDidMount() {
-    this.load();
-  }
+  useEffect(() => {
+    load();
+  }, []);
 
-  load = () => {
-    const { loadData } = this.props;
-    this.setState({ isFetching: true });
-    loadData()
+  const load = () => {
+    setIsFetching(true);
+    getProductsJSON()
       .then((data) => {
-        this.setState({ data });
+        setData(data);
       })
       .catch((error) => {
-        this.setState({ error });
+        setError(error);
       })
       .finally(() => {
-        this.setState({ isFetching: false });
+        setIsFetching(false);
       });
   };
 
-  render() {
-    const { render } = this.props;
-    return render(this.state);
-  }
-}
-
-LoaderData.propTypes = {
-  render: PropTypes.func.isRequired,
-  loadData: PropTypes.func.isRequired,
-};
-
-LoaderData.defaultProps = {
-  loadData: () => {
-    return Promise.reject();
-  },
+  return { data, error, isFetching };
 };
 
 export default LoaderData;

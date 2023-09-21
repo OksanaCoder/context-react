@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class CiaoSort extends Component {
   sortUsersByFirstName = () => {
@@ -32,10 +32,10 @@ class CiaoSort extends Component {
     return (
       <div>
         <button onClick={this.sortUsersByFirstName}>
-          sort by name {isSortFirstNameUp ? 'up' : 'down'}
+          sort by name {isSortFirstNameUp ? "up" : "down"}
         </button>
         <button onClick={this.sortUsersById}>
-          sort by id {isSortIdUp ? 'up' : 'down'}
+          sort by id {isSortIdUp ? "up" : "down"}
         </button>
       </div>
     );
