@@ -14,7 +14,6 @@ const Ciao = ({ name, lname, id }) => {
       <span>
         {isHi ? "hi" : "bye"}, {name} {lname} (id = {id})
       </span>
-      <button onClick={this.handleBtn}>switch</button>
     </h2>
   );
 };
